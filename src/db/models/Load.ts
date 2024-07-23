@@ -1,6 +1,7 @@
 import mongoose, { Schema, Document } from 'mongoose'
 
 interface ILoad extends Document {
+  open: boolean
   title: string
   description: string
   weight: number
@@ -9,6 +10,7 @@ interface ILoad extends Document {
 }
 
 const LoadSchema: Schema = new Schema({
+  status: { type: Boolean, required: true, default: true },
   title: { type: String, required: true },
   description: { type: String, required: true },
   weight: { type: Number, required: true },

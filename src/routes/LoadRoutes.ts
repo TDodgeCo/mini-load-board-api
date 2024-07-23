@@ -4,6 +4,7 @@ import LoadsController from '../controllers/LoadsController'
 const router = Router()
 
 router.get('/', LoadsController.index.bind(LoadsController))
+router.post('/', LoadsController.store.bind(LoadsController))
 router.get('/show', LoadsController.show.bind(LoadsController))
 
 export default router

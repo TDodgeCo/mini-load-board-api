@@ -1,21 +1,22 @@
-import express from 'express';
-import connectDB from '../db';
-import loadRoutes from './routes/load';
-import dotenv from 'dotenv';
+import express from 'express'
+import connectDB from '../db'
+import loadRoutes from './routes/load'
+import dotenv from 'dotenv'
 
-dotenv.config();
+dotenv.config()
 
-const app = express();
+const app = express()
 
 // Connect to the database
-connectDB();
+connectDB()
 
 // Middleware to parse JSON
-app.use(express.json());
+app.use(express.json())
 
 // Define routes
-app.use('/api/loads', loadRoutes);
+app.get('/', (req, res) => res.send('API Running test'))
+app.use('/api/loads', loadRoutes)
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3333
 
-app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+app.listen(PORT, () => console.log(`Server started on port ${PORT}`))

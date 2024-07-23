@@ -1,11 +1,21 @@
-import express from 'express'
-import routes from './routes'
+import express from 'express';
+import connectDB from '../db';
+import loadRoutes from './routes/load';
+import dotenv from 'dotenv';
 
-const app = express()
-const port = 3333
+dotenv.config();
 
-app.use('/', routes)
+const app = express();
 
-app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`)
-})
+// Connect to the database
+connectDB();
+
+// Middleware to parse JSON
+app.use(express.json());
+
+// Define routes
+app.use('/api/loads', loadRoutes);
+
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
